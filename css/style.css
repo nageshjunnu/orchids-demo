@@ -10175,6 +10175,12 @@ li.bg-white-border {
     margin: 0px !important;
     margin-top: 10px !important;
   }
+  .icon-details {
+      width: 100%;
+  }
+  .counts-icon {
+    margin-left: auto;
+}
 
 }
 
