@@ -10182,7 +10182,9 @@ li.bg-white-border {
   .counts-icon {
     margin-left: auto;
 }
-
+  .banner {
+    padding: 0 !important;
+  }
 }
 
 
@@ -10235,3 +10237,4 @@ a.icon-socio {
   padding: 30px 10px;
 
 }
+
