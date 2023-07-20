@@ -10185,6 +10185,9 @@ li.bg-white-border {
   .banner {
     padding: 0 !important;
   }
+  .moto{
+    height: auto !important;
+  }
 }
 
 
