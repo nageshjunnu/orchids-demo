@@ -8734,7 +8734,7 @@ h6, .h6 {
 .btn.w-100::after, .btn.d-block::after, .btn.d-flex::after, .btn.effect-none::after {
   display: none;
 }
-.btn-sm {22px
+.btn-sm {
   padding: 13px 25px;
 }
 .btn:hover, .btn:active, .btn.active, .btn:focus, .btn.focus {
@@ -8750,7 +8750,7 @@ h6, .h6 {
   transition: 0.4s;
   transform: rotate(0deg);
 }
-22px
+
 .btn-primary {
   background: #ffc947;
 color: #000;
@@ -9919,11 +9919,11 @@ textarea.form-control {
   display: inline-block;
   height: 45px;
   width: 45px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 #TableOfContents ul {
@@ -10062,7 +10062,7 @@ textarea.form-control {
 .pagination .page-item .page-link:hover {
   background: #ffc947;
   color: #fff;
-  border-color: #ffc947;120px
+  border-color: #ffc947;
   text-decoration: none;
 }
 .pagination .page-item .page-link:focus {
@@ -10078,7 +10078,7 @@ textarea.form-control {
 }
 
 .widget {
-  margin-bottom: 30px;120px
+  margin-bottom: 30px;
 }
 .widget .widget-title {
   margin-bottom: 15px;
@@ -10238,3 +10238,13 @@ a.icon-socio {
 
 }
 
+.cities-list {
+  color: #434343;
+  border: 1px solid #d0cccc;
+  margin: 5px;
+  padding: 3px;
+  border-radius: 10px;
+}
+.list-ul{
+  padding-left: 0 !important;
+}
