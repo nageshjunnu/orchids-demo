@@ -10251,3 +10251,16 @@ a.icon-socio {
 .safety img{
   width: 30%;
 }
+
+.navigation .navbar-expand-xl .navbar-nav .nav-link {
+  padding: 15px;
+  margin-right: 37px;
+}
+
+@media (min-width: 1199px)
+{
+.navigation .nav-item.dropdown .nav-link::after {
+    /* position: absolute; */
+    margin-right: -15px;
+}
+}
