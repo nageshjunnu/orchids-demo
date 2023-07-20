@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="plugins/font-awesome/fontawesome.min.css">
 	<link rel="stylesheet" href="plugins/font-awesome/brands.css">
 	<link rel="stylesheet" href="plugins/font-awesome/solid.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="css/style.css">
@@ -32,7 +33,7 @@
 
 <!-- navigation -->
 <header class="navigation bg-tertiary">
-	<nav class="navbar navbar-expand-xl navbar-light text-center py-3">
+	<nav class="navbar navbar-expand-xl navbar-light text-center py-3" id="navbar_top">
 		<div class="container">
 			<a class="navbar-brand" href="index.html">
 				<img loading="prelaod" decoding="async" class="img-fluid" width="160" src="images/logo.png" alt="Wallet">
@@ -216,6 +217,14 @@
     </svg>
   </div> -->
 </section>
+<!-- <section style="
+    margin-top: -354px;
+    z-index: 9999;
+    position: relative;
+	/* opacity: 0.6; */
+">
+	<img src ="images/bg-unscreen.gif"  width="50%" style="max-height: 351px;"/>
+</section> -->
 <section class="about-section section bg-tertiary position-relative overflow-hidden" style="background:#12141d;">
   <div class="container">
     <div class="row align-items-center">
@@ -236,12 +245,12 @@
         </div>
       </div>
       <div class="col-lg-6">
-				<div class="section-title text-center"  style="border: 1px solid #474747;padding:30px;background-image: url('images/boarding.png');background-position: bottom;background-repeat: no-repeat;background-size: 103%;height: 490px;border-radius: 10px;">
+				<div class="section-title text-center"  style="border: 1px solid #fbfbfd;padding:30px;background-image: url('images/boarding.png');background-position: bottom;background-repeat: no-repeat;background-size: 103%;height: 490px;border-radius: 10px;background-color: #fbfbfd;color: #000;">
 					<!-- <p class="text-primary text-uppercase fw-bold mb-3">Day School</p> -->
-					<h1 class="text-white"  style="font-size: 40px;">Boarding School</h1>
+					<h1 class="text-dark"  style="font-size: 40px;">Boarding School</h1>
 					<p class=" mb-3" style="color:#98a2b3;font-size: 23px">50+ Schools across the country</p>
 					<a href ="#" class="">Learn more <i class="fas fa-angle-right	" style="font-size:10px;margin-left: 10px"></i></a>
-					<a href="#" class="ml-15" style="margin-left:25px;color:#fff;">Enquire now <i class="fas fa-angle-right	" style="font-size:10px;margin-left: 10px"></i></a>
+					<a href="#" class="ml-15 text-dark" style="margin-left:25px;">Enquire now <i class="fas fa-angle-right	" style="font-size:10px;margin-left: 10px"></i></a>
 					<!-- <p class="lead mb-0 mt-4">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consv allis quam aliquet integer eget magna
 							ullam corper intesager vulutate aenean nunc quis a urna morbi id vitae. Vulpuate nisl</p>
@@ -291,10 +300,10 @@
 
 
 <section class="about-section section bg-tertiary position-relative overflow-hidden">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <div class="section-title text-center" style="background:#f2f4f7;height:auto;padding: 20px;border-radius: 20px;height: 600px;"
+        <div class="section-title text-center" style="height:auto;padding: 20px;/* border-radius: 20px; */height: 600px;"
 				>
           <!-- <p class="text-primary text-uppercase fw-bold mb-3">Day School</p> -->
           <h1 class="">Zero Compromise on <br/> your children safety</h1>
@@ -316,7 +325,7 @@
         </div>
       </div>
       <div class="col-lg-6">
-				<div class="section-title text-center bg-black " style="background:#000;height:auto;padding:60px;border-radius: 20px;padding: 20px;border-radius: 20px;height: 600px;">
+				<div class="section-title text-center bg-black " style="background:#000;height:auto;padding:60px;padding: 20px;height: 600px;">
 					<!-- 50+ Schools across the country -->
 						<!-- <p class="text-primary text-uppercase fw-bold mb-3">Day School</p> -->
 					<h1 class="text-white">More than a school</h1>
@@ -372,16 +381,12 @@
     </div>
   </div>
 
-</section>
-
-
-<section class="about-section section bg-tertiary position-relative overflow-hidden">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <div class="section-title text-center" style="background:#f2f4f7;border-radius:15px;padding:50px;height: 600px;">
+        <div class="section-title text-center" style="background:#fafafa;border-radius:15px;padding:50px;height: 600px;">
 			  <!-- <p class="text-primary text-uppercase fw-bold mb-3">Day School</p> -->
-          <h2 class="text-dark">Infrastructure at Orchids <br/>The International School</h2>
+          <h2 class="text-dark">Infrastructure at Orchids </h2>
 					<p class="mb-3 " >Orchids is not just an another CBSE or ICSE school in india, it is your child's second home.
 						Zero Compromise on safety</p>
 					<a href ="#" class="">Learn more <i class="fas fa-angle-right	" style="font-size:10px"></i></a>
@@ -399,9 +404,9 @@
         </div>
       </div>
       <div class="col-lg-6" >
-				<div class="section-title text-center moto"  style="background:#f2f4f7;border-radius:15px;padding:50px;height: 600px;">
+				<div class="section-title text-center moto"  style="background: #f2f2f4;border-radius:15px;padding:50px;height: 600px;">
 						<!-- <p class="text-primary text-uppercase fw-bold mb-3">Day School</p> -->
-					<h2 class="text-dark">	Orchids' motto is to turn learning into a joyful effort. </h2>
+					<h2 class="text-dark">	Orchids' motto </h2>
 					<p class="text-dark mb-3" style="color:#98a2b3">
 					It's our honour to continue
 this journey for more than two decades by inspiring young minds.
@@ -476,14 +481,203 @@ this journey for more than two decades by inspiring young minds.
 <section class="section" style="background:#000;">
   <div class="container">
     <div class="row">
-			  <h1 class="text-center text-white">Our philosophy</h1>
+			  <h1 class="text-center text-white">Our Philosophy</h1>
 				<div class="row m-10" style="margin-top:30px">
 					<img src = "https://orchids-nextjs.vercel.app/_next/static/media/philosophy.6c2fe11d.svg">
 				</div>
 </div>
 </div>
 </section>
+<section class="section core-value bg-tertiary">
+	<div class="container">
+		<h2 class="h1 text-center" >Locate Near By Schools</h2>
+		<div class="row align-items-center mt-5">
+			<div class="col-lg-6">
+				  <!-- Actual search box -->
+				  <div class=" mb-5">
+					<div class="">
+					  
+					  <!-- <div class=" p-5"> -->
+				
+						<!-- Custom rounded search bars with input group -->
+						<form action="">
+						 
+						  <div class="input-group  border " style="border-radius:10px;padding: 2px;">
+							<input type="search" placeholder="Search" aria-describedby="button-addon3" class="form-control bg-none border-0">
+							<div class="input-group-append border-0" style="padding-bottom: 8px;">
+							  <button id="button-addon3" type="button" class="btn btn-primary text-dark">Locate</button>
+							</div>
+						  </div>
+						 
+						</form>
+						<!-- End -->
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
 
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div>
+
+				
+					  <!-- </div> -->
+					</div>
+				  </div>
+				
+				
+			</div>
+			<div class="col-lg-6 mt-lg-0">
+				<div class="section-title ps-0 ">
+					<!-- <p class="text-primary text-uppercase fw-bold mb-3">Values Wr Provide</p> -->
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.093704318301!2d77.594096!3d12.840249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b3125c2b001%3A0x49117923fa146aa7!2sORCHIDS%20The%20International%20School%20-%20Bannerghatta!5e0!3m2!1sen!2sin!4v1689861148183!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!--
 <footer class="section-sm bg-tertiary">
@@ -732,7 +926,22 @@ this journey for more than two decades by inspiring young minds.
   </div>
   </section>
 </footer>
-
+	<script>
+		document.addEventListener("DOMContentLoaded", function(){
+			window.addEventListener('scroll', function() {
+				if (window.scrollY > 50) {
+					document.getElementById('navbar_top').classList.add('fixed-top');
+					// add padding top to show content behind navbar
+					navbar_height = document.querySelector('.navbar').offsetHeight;
+					document.body.style.paddingTop = navbar_height + 'px';
+				} else {
+					document.getElementById('navbar_top').classList.remove('fixed-top');
+					// remove padding top from body
+					document.body.style.paddingTop = '0';
+				} 
+			});
+			}); 
+	</script>
 
 <!-- # JS Plugins -->
 <script src="plugins/jquery/jquery.min.js"></script>
