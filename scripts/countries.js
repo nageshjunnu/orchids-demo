@@ -10,5 +10,16 @@
     "DOM":"DNC MULTIPURPOSE HIGH SCHOOL CAMPUS, DNC Rd, Sudam Wadi, Dombivli East, Dombivli, Maharashtra 421201",
     "KOP":"Gahlot Hall, 59, Gyan Vikas Road, near D-Mart, Sector 14, Kopar Khairane, Navi Mumbai, Maharashtra 400709",
     "KOP2":"Plot No. 23, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709, India",
+    "BACH":"D no. 6-149/5/B,Survey No : 422&422/1, near Dollar Meadows, Bowrampet, Hyderabad, Telangana 500043",
+    "NBC":"New Braham Colony, 131001, Delhi Road, Sonepat, nearby ICICI Bank, Sonipat, Haryana 131001",
+    "GHRD":"Chamaria Road, NH-71A, Gohana Rd, Rohtak, Haryana 124001",
+    "KORD": "Bokhara Road Railway Crossing, Koradi Rd, Nagpur, Maharashtra 440023",
+    "JKA":"Thakurpukur - Bibirhat - Bakhrahat - Raipur Rd, Rasapunja, Kolkata, Raypur, West Bengal 700104",
+    "MHG":"Badu Rd, Shri Nagar, Netaji Nagar, Madhyamgram, Kolkata, West Bengal 700129",
+    "NTW":"Education & Research Foundation, ACHARYA MAHAPRAGYA MAHASHRAMAN, Major Arterial Road, Jodthbhim, South-East, Newtown, Kolkata, New Town, West Bengal 700156, India",
+    "NEV":"Nevta Road, Narayan-Y-Block, Khatwara, Jaisinghpura, Mahapura, Bhankrota, Rajasthan 302026",
+    "BHRD":"Near Medical College Bypass Junction Bhedaghat, Road, Garha, Jabalpur, Madhya Pradesh 482003",
+    "ARSQ":"Ujjain - Indore Rd, near MR 10 Road, Bhawrasla, Indore, Madhya Pradesh 453555",
+    "MNG":"AB Rd, Near Mangalia toll naka, Indore, Madhya Pradesh 453771"
 
 }
