@@ -494,23 +494,79 @@ this journey for more than two decades by inspiring young minds.
 		<div class="row align-items-center mt-5">
 			<div class="col-lg-6">
 				  <!-- Actual search box -->
-				  <div class=" mb-5">
+				  <div class=" mb-5" style="height: 600px;">
 					<div class="">
 					  
 					  <!-- <div class=" p-5"> -->
 				
 						<!-- Custom rounded search bars with input group -->
-						<form action="">
-						 
-						  <div class="input-group  border " style="border-radius:10px;padding: 2px;">
-							<input type="search" placeholder="Search" aria-describedby="button-addon3" class="form-control bg-none border-0">
-							<div class="input-group-append border-0" style="padding-bottom: 8px;">
-							  <button id="button-addon3" type="button" class="btn btn-primary text-dark">Locate</button>
+					
+						  <div class="input-group" >
+							<input type="search" placeholder="Search" aria-describedby="button-addon3" class="" name="country" id="autocomplete-ajax" style="position: absolute; z-index: 2; background: transparent;width: 100%;border:1px solid #ddd;height: 70px;vertical-align: top;border-radius: 14px;">
+							<input type="text" name="country" id="autocomplete-ajax-x" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;width: 100%;border:1px solid #ddd;height: 70px;border-radius: 14px;"/>
+							
+							<div class="input-group-append border-0" style="padding-bottom: 18px;width: 100%;">
+							  <button id="button-addon3" type="button" class="btn btn-primary text-dark" style="float: right;">Locate</button>
 							</div>
+							<!-- <div style="z-index: 9999;position: relative;">
+								<span style="margin-right: 10px;"><input type="checkbox" value="cbse"/> CBSE School</span>
+								<span><input type="checkbox" value="cbse"/> ICSE School</span> 
+							</div> -->
 						  </div>
-						 
-						</form>
+						  <div id="selction-ajax"></div>
+					
 						<!-- End -->
+						<!-- <div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>	<form action="">
+						 
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-8">
+								CBSE in Gurgoan Sec 55
+								<p>
+									Block G, South city, Sector 41, Gurugram,..
+								</p>
+							</div>
+							<div class="col-2">
+								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i></a>
+							</div>
+							<div class="col-2">
+								<a href ="#"><i class="fas fa-globe" style="color: gray;
+								margin-right: 10px;
+								border-radius: 50%;
+								border: 1px solid #ddd;
+								padding: 10px;"></i>
+								</a>
+
+							</div>
+						</div> -->
+						<!-- <hr/>
 						<div class="row">
 							<div class="col-8">
 								CBSE in Gurgoan Sec 55
@@ -609,57 +665,7 @@ this journey for more than two decades by inspiring young minds.
 								</a>
 
 							</div>
-						</div>
-						<hr/>
-						<div class="row">
-							<div class="col-8">
-								CBSE in Gurgoan Sec 55
-								<p>
-									Block G, South city, Sector 41, Gurugram,..
-								</p>
-							</div>
-							<div class="col-2">
-								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
-								margin-right: 10px;
-								border-radius: 50%;
-								border: 1px solid #ddd;
-								padding: 10px;"></i></a>
-							</div>
-							<div class="col-2">
-								<a href ="#"><i class="fas fa-globe" style="color: gray;
-								margin-right: 10px;
-								border-radius: 50%;
-								border: 1px solid #ddd;
-								padding: 10px;"></i>
-								</a>
-
-							</div>
-						</div>
-						<hr/>
-						<div class="row">
-							<div class="col-8">
-								CBSE in Gurgoan Sec 55
-								<p>
-									Block G, South city, Sector 41, Gurugram,..
-								</p>
-							</div>
-							<div class="col-2">
-								<a href = "#"><i class="fa fa-map-marker" style="color: gray;
-								margin-right: 10px;
-								border-radius: 50%;
-								border: 1px solid #ddd;
-								padding: 10px;"></i></a>
-							</div>
-							<div class="col-2">
-								<a href ="#"><i class="fas fa-globe" style="color: gray;
-								margin-right: 10px;
-								border-radius: 50%;
-								border: 1px solid #ddd;
-								padding: 10px;"></i>
-								</a>
-
-							</div>
-						</div>
+						</div> -->
 
 				
 					  <!-- </div> -->
@@ -671,8 +677,9 @@ this journey for more than two decades by inspiring young minds.
 			<div class="col-lg-6 mt-lg-0">
 				<div class="section-title ps-0 ">
 					<!-- <p class="text-primary text-uppercase fw-bold mb-3">Values Wr Provide</p> -->
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.093704318301!2d77.594096!3d12.840249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b3125c2b001%3A0x49117923fa146aa7!2sORCHIDS%20The%20International%20School%20-%20Bannerghatta!5e0!3m2!1sen!2sin!4v1689861148183!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-					
+					<div id = "map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.093704318301!2d77.594096!3d12.840249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b3125c2b001%3A0x49117923fa146aa7!2sORCHIDS%20The%20International%20School%20-%20Bannerghatta!5e0!3m2!1sen!2sin!4v1689861148183!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -948,6 +955,13 @@ this journey for more than two decades by inspiring young minds.
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
 <script src="plugins/slick/slick.min.js"></script>
 <script src="plugins/scrollmenu/scrollmenu.min.js"></script>
+
+
+<!-- <script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script> -->
+<script type="text/javascript" src="scripts/jquery.mockjax.js"></script>
+<script type="text/javascript" src="src/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="scripts/countries.js"></script>
+<script type="text/javascript" src="scripts/demo.js"></script>
 
 <!-- Main Script -->
 <script src="js/script.js"></script>
