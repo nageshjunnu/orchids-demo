@@ -20,6 +20,17 @@
     "NEV":"Nevta Road, Narayan-Y-Block, Khatwara, Jaisinghpura, Mahapura, Bhankrota, Rajasthan 302026",
     "BHRD":"Near Medical College Bypass Junction Bhedaghat, Road, Garha, Jabalpur, Madhya Pradesh 482003",
     "ARSQ":"Ujjain - Indore Rd, near MR 10 Road, Bhawrasla, Indore, Madhya Pradesh 453555",
-    "MNG":"AB Rd, Near Mangalia toll naka, Indore, Madhya Pradesh 453771"
+    "MNG":"AB Rd, Near Mangalia toll naka, Indore, Madhya Pradesh 453771",
+    "DWEX":"Tata Housing, Sector 113, Bajghera, Gurugram, Haryana 122017",
+    "SOY":"Block G, South City I, Sector 41, Gurugram, Haryana 122003",
+    "DW19":"Dwarka Goyla Dairy Rd, near Sector 19, Dwarka, New Delhi, Delhi, 110071",
+    "HNRD":"National Highway 12, Narmadapuram Rd, Ratanpur Sadak, Bhopal, Madhya Pradesh 462026",
+    "TCH":"Gut No 35, Adgaon Bk, Maharashtra 431007",
+    "PLKI":"Bharathiyar St, BHEL Nagar, Pallikaranai, Chennai, Tamil Nadu 600100",
+    "THPK":"274/8, 4th Street Okkiyam, Thuraipakkam, near COGNIZANT TCO, Chennai, Tamil Nadu 600097",
+    "JBHL":"C9RX+Q9F, Road Number 36, 1, opposite lane of Balaji Grand Bazaar, Kakatiya Hills, Guttala_Begumpet, Kavuri Hills, Jubilee Hills, Hyderabad, Telangana 500033, India",
+    "BCPY":"D no. 6-149/5/B,Survey No : 422&422/1, near Dollar Meadows, Bowrampet, Hyderabad, Telangana 500043",
+    "HNWD":"Ghotawade, Mulkhed, Road, Pune, Maharashtra 412115",
+    "CIWD":"Next to Luxury Living, Near Yashopuram Housing Society, Gawade Nagar Chinchwad Pimpri, Chinchwad, Pune, Maharashtra 411033"
 
 }

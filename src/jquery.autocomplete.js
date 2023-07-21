@@ -684,7 +684,7 @@
                     html += formatGroup(suggestion, value, i);
                 }
                 console.log(value);
-                html += '<div class="row"><div class="col-8" ><div class="' + className + '" data-index="' + i + '" >' + formatResult(suggestion, value, i) + '</div></div><div class="col-2"><a href = "#"><i class="fa fa-map-marker" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><div class="col-2"><a href ="#"><i class="fas fa-globe" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><hr/>';
+                html += '<div class="row" style="cursor:pointer;"><div class="col-8" ><div class="' + className + '" data-index="' + i + '" >' + formatResult(suggestion, value, i) + '</div></div><div class="col-2"><a href = "#"><i class="fa fa-map-marker" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><div class="col-2"><a href ="#"><i class="fas fa-globe" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><hr/>';
             });
             html+="</div>";
 
