@@ -10218,7 +10218,12 @@ li.bg-white-border {
   .navigation .nav-item.dropdown .nav-link::after {
     margin-left: 7px !important;
 }
-
+iframe {
+  width: fit-content;
+}
+.mb-5.mapdiv {
+  height: fit-content !important;
+}
 }
 
 
@@ -10341,7 +10346,4 @@ nav.fixed-top ul li a {
 }
 input.form-control.bg-none.border-0 {
   margin-left: 24px;
-}
-iframe {
-  width: fit-content;
 }
