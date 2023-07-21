@@ -8,5 +8,7 @@
     "HOR":"Sy. No 63 Horamavu Agara Road, Hobli, K.R. Puram, Bengaluru, Karnataka 560043",
     "BOR":"PLOT # 3/3A, R.S.C. OPP SHREE DARSHAN SOCIETY, SHIMPOLI ROAD,GORAI - 1,, NEAR GANESH DURGA TEMPLE & BEST OFFICER QUARTERS, BORIVALI WEST, MUMBAI, Mumbai, Maharashtra 400092, India",
     "DOM":"DNC MULTIPURPOSE HIGH SCHOOL CAMPUS, DNC Rd, Sudam Wadi, Dombivli East, Dombivli, Maharashtra 421201",
+    "KOP":"Gahlot Hall, 59, Gyan Vikas Road, near D-Mart, Sector 14, Kopar Khairane, Navi Mumbai, Maharashtra 400709",
+    
 
 }
