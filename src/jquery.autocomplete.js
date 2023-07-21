@@ -144,7 +144,7 @@
 
             // console.log("key v ",suggestion);
 
-        return suggestion.data + "-" + suggestion.value
+        return  suggestion.value
             .replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
