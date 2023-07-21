@@ -10152,7 +10152,7 @@ textarea.form-control {
     transform: scale(1, 1);
   }
   50% {
-    transform: scale(1.5, 1.5);
+    transform: scale(1.2, 1.2);
   }
   100% {
     transform: scale(1, 1);
