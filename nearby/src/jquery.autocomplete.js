@@ -127,6 +127,7 @@
     };
 
     function _lookupFilter(suggestion, originalQuery, queryLowerCase) {
+
         return suggestion.value.toLowerCase().indexOf(queryLowerCase) !== -1;
     };
 
@@ -142,7 +143,7 @@
           
         var pattern = '(' + utils.escapeRegExChars(currentValue) + ')';
 
-            // console.log("key v ",suggestion);
+            // console.log("key v ",utils);
 
         return  suggestion.value
             .replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
@@ -154,8 +155,89 @@
     };
 
     function _formatGroup(suggestion, category) {
+
         return '<div class="autocomplete-group">' + category + '</div>';
     };
+
+    function addresslatlong(address)
+    {
+         var typed_latlong = "";
+        var addressv = address;
+        var geocoder = new google.maps.Geocoder();  
+                  geocoder.geocode({ 'address': addressv }, function (results, status) {  
+                   
+                    if (status == google.maps.GeocoderStatus.OK) {  
+//                         res.innerHTML = "Latitude : " + results[0].geometry.location.lat() + "<br/>Longitude :" +  
+// results[0].geometry.location.lng();  
+                        //console.log("lattitudev", results[0].geometry.location.lat()+" <br/>long "+results[0].geometry.location.lng());
+                    // /   console.log( distance(lat1, results[0].geometry.location.lat(), lon1, results[0].geometry.location.lng()))
+
+
+                        //  var distance1 = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lon1), new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));     
+                        //  console.log("distance ",distance1);
+
+
+                        var from = new google.maps.LatLng(localStorage.getItem("clat"), localStorage.getItem("clong"));
+                        var fromName = 'yeswanthpur';
+                        var dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        var destName =addressv;
+
+                        var service = new google.maps.DistanceMatrixService();
+                        service.getDistanceMatrix(
+                            {
+                                origins: [from, fromName],
+                                destinations: [destName, dest],
+                                travelMode: 'DRIVING',
+                                
+                            }, callback);
+                            
+                        function callback(response, status) {
+                            if (status == 'OK') {
+                                var origins = response.originAddresses;
+                                var destinations = response.destinationAddresses;
+                                var html1="";
+                                
+                                var arr =[];
+                                for (var i = 0; i < origins.length; i++) {
+                                    var results = response.rows[1].elements;
+                                    // console.log(results);
+                                    for (var j = 0; j < results.length; j++) {
+                                        var element = results[j];
+                                        var distance = element.distance.text;
+                                        var duration = element.duration.text;
+                                        var from = origins[i];
+                                        var to = destinations[j];
+
+                                     
+                                    }
+                                    //console.log(addressv+"---"+element.distance.text);
+                                   
+                                }
+                                                 
+                                                             
+                            
+                               
+                                
+                            }
+                           
+                        }
+
+                         typed_latlong = {lat:results[0].geometry.location.lat(),long:results[0].geometry.location.lng()};
+                            localStorage.setItem("clat",results[0].geometry.location.lat());
+                            localStorage.setItem("clong",results[0].geometry.location.lng());
+                            localStorage.setItem("caddress",addressv);
+                        console.log(typed_latlong);
+                       
+                       
+                    } else {  
+                        // res.innerHTML = "Wrong Details: " + status;  
+                        console.log("wrong")
+                        typed_latlong = {message:"wrong"};
+                    }  
+
+                }); 
+                   return typed_latlong;
+    }
 
     Autocomplete.prototype = {
 
@@ -525,19 +607,34 @@
                 queryLowerCase = query.toLowerCase(),
                 filter = options.lookupFilter,
                 limit = parseInt(options.lookupLimit, 10),
-                data;
+                data,
+                data1;
+
+            data1 = {
+                suggestions: $.grep(options.lookup, function (suggestion) {
+                    // console.log(suggestion.value);
+                    //return filter(suggestion, query, queryLowerCase);
+                    
+                    return suggestion;
+                })
+            };
 
             data = {
                 suggestions: $.grep(options.lookup, function (suggestion) {
+                    // console.log(suggestion.value);
                     return filter(suggestion, query, queryLowerCase);
+                    
+                    // return suggestion;
                 })
             };
 
             if (limit && data.suggestions.length > limit) {
                 data.suggestions = data.suggestions.slice(0, limit);
             }
-
-            return data;
+            // console.log(data.suggestions[0].value);
+            // var res=  addresslatlong(data.suggestions[0].value);
+            // console.log("res ",res)
+            return data1;
         },
 
         getSuggestions: function (q) {
@@ -799,7 +896,11 @@
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
                 }
-            //    console.log("types v ",suggestion);
+                if(value.length>=5){
+                       console.log("types v ",value+" -data- "+suggestion.data);
+                       // console.log(suggestion.value)
+                    addresslatlong(value)
+                   }
                     
                  // console.log("Lat  ",initMap(suggestion.value));
                  // var data = initMap(suggestion.value);
@@ -815,9 +916,9 @@
                         //  var distance1 = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lon1), new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));     
                         //  console.log("distance ",distance1);
 
-
+                        // console.log(localStorage.getItem("clat"));
                         var from = new google.maps.LatLng(localStorage.getItem("clat"), localStorage.getItem("clong"));
-                        var fromName = 'yeswanthpur';
+                        var fromName = localStorage.getItem("caddress");
                         var dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                         var destName =suggestion.value;
 
@@ -1247,3 +1348,5 @@
         $.fn.autocomplete = $.fn.devbridgeAutocomplete;
     }
 }));
+
+
