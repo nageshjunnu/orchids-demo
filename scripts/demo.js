@@ -1,4 +1,4 @@
-﻿/*jslint  browser: true, white: true, plusplus: true */
+/*jslint  browser: true, white: true, plusplus: true */
 /*global $, countries */
 
 $(function () {
@@ -7,6 +7,7 @@ $(function () {
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
 
     // Setup jQuery ajax mock:
+ 
     $.mockjax({
         url: '*',
         responseTime: 2000,
@@ -42,8 +43,8 @@ $(function () {
         {code:"BOR","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d482210.1262142515!2d72.834588!3d19.227209!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b1312f518933%3A0xf82b36cabf24b545!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Borivali!5e0!3m2!1sen!2sus!4v1689935326815!5m2!1sen!2sus" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"DOM","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7535.404911463815!2d73.088661!3d19.208194!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795c69d13e9e3%3A0x462c87c9ff849f22!2sORCHIDS%20The%20International%20School%20in%20Dombivli!5e0!3m2!1sen!2sin!4v1689935728682!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"KOP","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7540.449808111896!2d73.00172!3d19.097787!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c19b4bee5909%3A0xf590e744ffa741d0!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Koparkhairane%20Sector%2014!5e0!3m2!1sen!2sin!4v1689936264504!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
-        {code:"KOP2","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15079.763368742122!2d73.005555!3d19.110251!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0c56f21eb35%3A0x743ad9ace91cc6ce!2sTerna%20ORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Koparkhairane!5e0!3m2!1sen!2sus!4v1689936387557!5m2!1sen!2sus" width="600" height"600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
-        {code:"BACH","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d973814.6312174179!2d78.400051!3d17.556929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f3de3c99907%3A0x970a49a906658424!2sORCHIDS%20The%20International%20School%20in%20Bachupally!5e0!3m2!1sen!2sin!4v1689936899294!5m2!1sen!2sin" width="600" height"600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
+        {code:"KOP2","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15079.763368742122!2d73.005555!3d19.110251!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0c56f21eb35%3A0x743ad9ace91cc6ce!2sTerna%20ORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Koparkhairane!5e0!3m2!1sen!2sus!4v1689936387557!5m2!1sen!2sus" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
+        {code:"BACH","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d973814.6312174179!2d78.400051!3d17.556929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f3de3c99907%3A0x970a49a906658424!2sORCHIDS%20The%20International%20School%20in%20Bachupally!5e0!3m2!1sen!2sin!4v1689936899294!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"NBC","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6979.853130992802!2d77.029085!3d28.989546999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390db0142011533d%3A0xc5d4f4ef548dd93b!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20NBC%20Sonipat!5e0!3m2!1sen!2sin!4v1689936005038!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"GHRD","iframe": '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6981.712896260685!2d76.612871!3d28.961982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d85e46bbb4c9b%3A0xb138364ce328314d!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Rohtak!5e0!3m2!1sen!2sin!4v1689936169661!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"KORD","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7439.123130293863!2d79.075546!3d21.209569!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c16546669319%3A0xc73fbabb92f98a65!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Koradi%20Road%20Nagpur!5e0!3m2!1sen!2sin!4v1689936258210!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
@@ -65,9 +66,12 @@ $(function () {
         {code:"BCPY","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d973814.6312174179!2d78.400051!3d17.556929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f3de3c99907%3A0x970a49a906658424!2sORCHIDS%20The%20International%20School%20in%20Bachupally!5e0!3m2!1sen!2sin!4v1689941825311!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"HNWD","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15130.626222584853!2d73.672102!3d18.544416!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bcbc6e83c2d9%3A0x1511940c35637aa8!2sORCHIDS%20The%20International%20School%20-%20CBSE%20School%20in%20Hinjewadi!5e0!3m2!1sen!2sin!4v1689941891887!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
         {code:"CIWD","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7561.539690751917!2d73.794138!3d18.629419!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9a2a28ba275%3A0x7dcbb76b89aabf22!2sORCHIDS%20The%20International%20School%20in%20Chinchwad!5e0!3m2!1sen!2sin!4v1689941955474!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
+        {code:"RAJ","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7775.246717141499!2d77.55556300000005!3d12.995925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d903b0e82e1%3A0x94c6bda5df8bca64!2sORCHIDS%20The%20International%20School%20in%20Rajajinagar!5e0!3m2!1sen!2sin!4v1690276889799!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
+         {code:"MAHA","iframe":'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7774.745772477344!2d77.547216!3d13.01191!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3db42af55ffd%3A0xab410e2297297034!2sORCHIDS%20The%20International%20School%20in%20Mahalakshmi%20Layout!5e0!3m2!1sen!2sus!4v1690279964938!5m2!1sen!2sus" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'},
     ];
 
     // Initialize ajax autocomplete:
+   
     
     $('#autocomplete-ajax').autocomplete({
         
@@ -75,21 +79,22 @@ $(function () {
         lookup: countriesArray,
         lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
             var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
-            // console.log("demo v",suggestion.data);
+            // console.log("demo v",suggestion);
             return re.test(suggestion.value);
+            
         },
         onSelect: function(suggestion) {
             $('#selction-ajax').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
-            //console.log(maps.length);
+            // console.log("selected ",suggestion);
             $('#map').html('<div><img src = "./images/map.gif"/></div>');
             for (let i = 0; i <maps.length; i++) 
             {
-                console.log("sugg ",suggestion.data);
+                // console.log("sugg ",suggestion.data);
 
                 if(suggestion.data == maps[i].code)
                 {   
-                    console.log("code ",maps[i].code); 
-                    console.log("code ",maps[i].iframe);
+                   console.log("code ",maps[i].code); 
+                   // console.log("code ",maps[i].iframe);
                     $('#map').html(maps[i].iframe);
                 }else{
                     // $('#map').html(bannerghatta);
@@ -107,32 +112,34 @@ $(function () {
         }
     });
 
-    var nhlTeams = ['Anaheim Ducks', 'Atlanta Thrashers', 'Boston Bruins', 'Buffalo Sabres', 'Calgary Flames', 'Carolina Hurricanes', 'Chicago Blackhawks', 'Colorado Avalanche', 'Columbus Blue Jackets', 'Dallas Stars', 'Detroit Red Wings', 'Edmonton OIlers', 'Florida Panthers', 'Los Angeles Kings', 'Minnesota Wild', 'Montreal Canadiens', 'Nashville Predators', 'New Jersey Devils', 'New Rork Islanders', 'New York Rangers', 'Ottawa Senators', 'Philadelphia Flyers', 'Phoenix Coyotes', 'Pittsburgh Penguins', 'Saint Louis Blues', 'San Jose Sharks', 'Tampa Bay Lightning', 'Toronto Maple Leafs', 'Vancouver Canucks', 'Washington Capitals'];
-    var nbaTeams = ['Atlanta Hawks', 'Boston Celtics', 'Charlotte Bobcats', 'Chicago Bulls', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets', 'Detroit Pistons', 'Golden State Warriors', 'Houston Rockets', 'Indiana Pacers', 'LA Clippers', 'LA Lakers', 'Memphis Grizzlies', 'Miami Heat', 'Milwaukee Bucks', 'Minnesota Timberwolves', 'New Jersey Nets', 'New Orleans Hornets', 'New York Knicks', 'Oklahoma City Thunder', 'Orlando Magic', 'Philadelphia Sixers', 'Phoenix Suns', 'Portland Trail Blazers', 'Sacramento Kings', 'San Antonio Spurs', 'Toronto Raptors', 'Utah Jazz', 'Washington Wizards'];
-    var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'NHL' }}; });
-    var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: 'NBA' } }; });
-    var teams = nhl.concat(nba);
+   
+
+    // var nhlTeams = ['Anaheim Ducks', 'Atlanta Thrashers', 'Boston Bruins', 'Buffalo Sabres', 'Calgary Flames', 'Carolina Hurricanes', 'Chicago Blackhawks', 'Colorado Avalanche', 'Columbus Blue Jackets', 'Dallas Stars', 'Detroit Red Wings', 'Edmonton OIlers', 'Florida Panthers', 'Los Angeles Kings', 'Minnesota Wild', 'Montreal Canadiens', 'Nashville Predators', 'New Jersey Devils', 'New Rork Islanders', 'New York Rangers', 'Ottawa Senators', 'Philadelphia Flyers', 'Phoenix Coyotes', 'Pittsburgh Penguins', 'Saint Louis Blues', 'San Jose Sharks', 'Tampa Bay Lightning', 'Toronto Maple Leafs', 'Vancouver Canucks', 'Washington Capitals'];
+    // var nbaTeams = ['Atlanta Hawks', 'Boston Celtics', 'Charlotte Bobcats', 'Chicago Bulls', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets', 'Detroit Pistons', 'Golden State Warriors', 'Houston Rockets', 'Indiana Pacers', 'LA Clippers', 'LA Lakers', 'Memphis Grizzlies', 'Miami Heat', 'Milwaukee Bucks', 'Minnesota Timberwolves', 'New Jersey Nets', 'New Orleans Hornets', 'New York Knicks', 'Oklahoma City Thunder', 'Orlando Magic', 'Philadelphia Sixers', 'Phoenix Suns', 'Portland Trail Blazers', 'Sacramento Kings', 'San Antonio Spurs', 'Toronto Raptors', 'Utah Jazz', 'Washington Wizards'];
+    // var nhl = $.map(nhlTeams, function (team) { return { value: team, data: { category: 'NHL' }}; });
+    // var nba = $.map(nbaTeams, function (team) { return { value: team, data: { category: 'NBA' } }; });
+    // var teams = nhl.concat(nba);
 
     // Initialize autocomplete with local lookup:
-    $('#autocomplete').devbridgeAutocomplete({
-        lookup: teams,
-        minChars: 1,
-        onSelect: function (suggestion) {
-            $('#selection').html('You selected: ' + suggestion.value + ', ' + suggestion.data.category);
-        },
-        showNoSuggestionNotice: true,
-        noSuggestionNotice: 'Sorry, no matching results',
-        groupBy: 'category'
-    });
+    // $('#autocomplete').devbridgeAutocomplete({
+    //     lookup: teams,
+    //     minChars: 1,
+    //     onSelect: function (suggestion) {
+    //         $('#selection').html('You selected: ' + suggestion.value + ', ' + suggestion.data.category);
+    //     },
+    //     showNoSuggestionNotice: true,
+    //     noSuggestionNotice: 'Sorry, no matching results',
+    //     groupBy: 'category'
+    // });
     
-    // Initialize autocomplete with custom appendTo:
-    $('#autocomplete-custom-append').autocomplete({
-        lookup: countriesArray,
-        appendTo: '#suggestions-container'
-    });
+    // // Initialize autocomplete with custom appendTo:
+    // $('#autocomplete-custom-append').autocomplete({
+    //     lookup: countriesArray,
+    //     appendTo: '#suggestions-container'
+    // });
 
-    // Initialize autocomplete with custom appendTo:
-    $('#autocomplete-dynamic').autocomplete({
-        lookup: countriesArray
-    });
+    // // Initialize autocomplete with custom appendTo:
+    // $('#autocomplete-dynamic').autocomplete({
+    //     lookup: countriesArray
+    // });
 });
