@@ -895,7 +895,7 @@
             //Call the function with address as parameter
 
             // Build suggestions inner HTML:
-           html+='<div style="margin-top:10px;background:#fff"><div class ="sortingdiv animate__animated animate__fadeInLeft" id ="sortingdiv">';
+           html+='<div style="margin-top:10px;background:#fff"><div class ="sortingdiv" id ="sortingdiv">';
             $.each(that.suggestions, function (i, suggestion) {
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
@@ -1296,7 +1296,7 @@
         //                  that.currentValue = that.getValue(that.suggestions[i].value);
         //                  suggestion1 = that.suggestions[i].value;
 
-        //             }
+        //             }wow
         //        }
         //     that.currentValue = that.getValue(suggestion.value);
 
