@@ -127,6 +127,7 @@
     };
 
     function _lookupFilter(suggestion, originalQuery, queryLowerCase) {
+
         return suggestion.value.toLowerCase().indexOf(queryLowerCase) !== -1;
     };
 
@@ -142,7 +143,7 @@
           
         var pattern = '(' + utils.escapeRegExChars(currentValue) + ')';
 
-            // console.log("key v ",suggestion);
+            // console.log("key v ",utils);
 
         return  suggestion.value
             .replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
@@ -154,8 +155,93 @@
     };
 
     function _formatGroup(suggestion, category) {
+
         return '<div class="autocomplete-group">' + category + '</div>';
     };
+
+    function addresslatlong(address)
+    {
+         var typed_latlong = "";
+        var addressv = address;
+        var geocoder = new google.maps.Geocoder();  
+                  geocoder.geocode({ 'address': addressv }, function (results, status) {  
+                   
+                    if (status == google.maps.GeocoderStatus.OK) {  
+//                         res.innerHTML = "Latitude : " + results[0].geometry.location.lat() + "<br/>Longitude :" +  
+// results[0].geometry.location.lng();  
+                        //console.log("lattitudev", results[0].geometry.location.lat()+" <br/>long "+results[0].geometry.location.lng());
+                    // /   console.log( distance(lat1, results[0].geometry.location.lat(), lon1, results[0].geometry.location.lng()))
+
+
+                        //  var distance1 = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lon1), new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));     
+                        //  console.log("distance ",distance1);
+
+
+                        var from = new google.maps.LatLng(localStorage.getItem("clat"), localStorage.getItem("clong"));
+                        var fromName = localStorage.getItem("caddress");
+                        var dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        var destName =addressv;
+
+                        var service = new google.maps.DistanceMatrixService();
+                        service.getDistanceMatrix(
+                            {
+                                origins: [from, fromName],
+                                destinations: [destName, dest],
+                                travelMode: 'DRIVING',
+                                
+                            }, callback);
+                            
+                        function callback(response, status) {
+                            if (status == 'OK') {
+                                var origins = response.originAddresses;
+                                var destinations = response.destinationAddresses;
+                                var html1="";
+                                
+                                var arr =[];
+                                for (var i = 0; i < origins.length; i++) {
+                                    var results = response.rows[1].elements;
+                                    // console.log(results);
+                                    for (var j = 0; j < results.length; j++) {
+                                        var element = results[j];
+                                        var distance = element.distance.text;
+                                        var duration = element.duration.text;
+                                        var from = origins[i];
+                                        var to = destinations[j];
+
+                                     
+                                    }
+                                    //console.log(addressv+"---"+element.distance.text);
+                                   
+                                }
+                                                 
+                                                             
+                            
+                               
+                                
+                            }
+                           
+                        }
+
+                         typed_latlong = {lat:results[0].geometry.location.lat(),long:results[0].geometry.location.lng()};
+                            localStorage.setItem("clat",results[0].geometry.location.lat());
+                            localStorage.setItem("clong",results[0].geometry.location.lng());
+                            localStorage.setItem("caddress",results[0].formatted_address);
+                       
+
+                     //   console.log(typed_latlong);
+                       
+                       
+                    } else {  
+                        // res.innerHTML = "Wrong Details: " + status;  
+                       
+
+                       // console.log("wrong")
+                        typed_latlong = {message:"wrong"};
+                    }  
+
+                }); 
+                   return typed_latlong;
+    }
 
     Autocomplete.prototype = {
 
@@ -525,19 +611,34 @@
                 queryLowerCase = query.toLowerCase(),
                 filter = options.lookupFilter,
                 limit = parseInt(options.lookupLimit, 10),
-                data;
+                data,
+                data1;
+
+            data1 = {
+                suggestions: $.grep(options.lookup, function (suggestion) {
+                    // console.log(suggestion.value);
+                    //return filter(suggestion, query, queryLowerCase);
+                    
+                    return suggestion;
+                })
+            };
 
             data = {
                 suggestions: $.grep(options.lookup, function (suggestion) {
+                    // console.log(suggestion.value);
                     return filter(suggestion, query, queryLowerCase);
+                    
+                    // return suggestion;
                 })
             };
 
             if (limit && data.suggestions.length > limit) {
                 data.suggestions = data.suggestions.slice(0, limit);
             }
-
-            return data;
+            // console.log(data.suggestions[0].value);
+            // var res=  addresslatlong(data.suggestions[0].value);
+            // console.log("res ",res)
+            return data1;
         },
 
         getSuggestions: function (q) {
@@ -677,38 +778,277 @@
                 return;
             }
 
+
+            //Function to covert address to Latitude and Longitude
+            // var getLocation =  function(address) {
+            //     var geocoder = new google.maps.Geocoder();
+            //     geocoder.geocode( { 'address': address}, 
+            //     function(results, status) {
+            //         var res="";
+            //         if (status == google.maps.GeocoderStatus.OK) {
+            //             var latitude = results[0].geometry.location.lat();
+            //             var longitude = results[0].geometry.location.lng();
+            //             // console.log(latitude, longitude);
+            //             res = {"lattitude":latitude,"longitude":longitude};
+            //             // console.log("values ", val);
+            //             return res;
+            //             } 
+            //             return res;
+            //         }); 
+            // }
+
+            function initMap(address) {
+
+                var geocoder = new google.maps.Geocoder();
+                //var myLatLng = ""
+                var myLatLng = [];
+                geocoder.geocode( { 'address': address}, function(results, status) {
+    
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                    }
+    
+                    // console.log(latitude);
+                    // console.log(longitude);
+    
+                     myLatLng = myLatLng.push({lat: latitude, lng: longitude});
+                    
+
+                   
+    
+                });
+                return myLatLng;
+    
+    
+            }
+    
+            function distance(lat1,lat2, lon1, lon2)
+            {
+           
+                // The math module contains a function
+                // named toRadians which converts from
+                // degrees to radians.
+                lon1 =  lon1 * Math.PI / 180;
+                lon2 = lon2 * Math.PI / 180;
+                lat1 = lat1 * Math.PI / 180;
+                lat2 = lat2 * Math.PI / 180;
+           
+                // Haversine formula
+                let dlon = lon2 - lon1;
+                let dlat = lat2 - lat1;
+                let a = Math.pow(Math.sin(dlat / 2), 2)
+                         + Math.cos(lat1) * Math.cos(lat2)
+                         * Math.pow(Math.sin(dlon / 2),2);
+                       
+                let c = 2 * Math.asin(Math.sqrt(a));
+           
+                // Radius of earth in kilometers. Use 3956
+                // for miles
+                let r = 6371;
+           
+                // calculate the result
+                return(c * r);
+            }
+
+            let lat1 = localStorage.getItem("clat");
+            let lat2 = 13.0208629;
+            let lon1 = localStorage.getItem("clong");
+            let lon2 = 77.5406423;
+
+            // var from = new google.maps.LatLng(localStorage.getItem("clat"), localStorage.getItem("clong"));
+            // var fromName = 'yeswanthpur';
+            // var dest = new google.maps.LatLng(lat2, lon2);
+            // var destName = 'Behind PF quarters, Near HMT Theatre,Sector-2, HMT Colony,Jalahalli Village, Jalahalli,Bengaluru, Karnataka,Bangalore-560013';
+
+            // var service = new google.maps.DistanceMatrixService();
+            // service.getDistanceMatrix(
+            //     {
+            //         origins: [from, fromName],
+            //         destinations: [destName, dest],
+            //         travelMode: 'DRIVING',
+            //     }, callback);
+
+            // function callback(response, status) {
+            //     if (status == 'OK') {
+            //         var origins = response.originAddresses;
+            //         var destinations = response.destinationAddresses;
+
+            //         for (var i = 0; i < origins.length; i++) {
+            //             var results = response.rows[i].elements;
+            //             console.log(results);
+            //             for (var j = 0; j < results.length; j++) {
+            //                 var element = results[j];
+            //                 var distance = element.distance.text;
+            //                 var duration = element.duration.text;
+            //                 var from = origins[i];
+            //                 var to = destinations[j];
+
+            //                 console.log(element);
+            //             }
+            //         }
+            //     }
+            // }
+ 
+
+            
+            //Call the function with address as parameter
+
             // Build suggestions inner HTML:
-            html+='<div style="margin-top:50px;height:500px :overflow:scroll;background:#fff">';
+           html+='<div style="margin-top:10px;background:#fff"><div class ="sortingdiv animate__animated animate__fadeInLeft" id ="sortingdiv">';
             $.each(that.suggestions, function (i, suggestion) {
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
                 }
-                console.log(value);
-                html += '<div class="row" style="cursor:pointer;"><div class="col-8" ><div class="' + className + '" data-index="' + i + '" >' + formatResult(suggestion, value, i) + '</div></div><div class="col-2"><a href = "#"><i class="fa fa-map-marker" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><div class="col-2"><a href ="#"><i class="fas fa-globe" style="color: gray;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a></div><hr/>';
+                if(value.length>=5){
+                       // console.log("types v ",value+" -data- "+suggestion.data);
+                       // console.log(suggestion.value)
+                    addresslatlong(value)
+                   }
+                    
+                 // console.log("Lat  ",initMap(suggestion.value));
+                 // var data = initMap(suggestion.value);
+                 var geocoder = new google.maps.Geocoder();  
+                  geocoder.geocode({ 'address': suggestion.value }, function (results, status) {  
+                    if (status == google.maps.GeocoderStatus.OK) {  
+//                         res.innerHTML = "Latitude : " + results[0].geometry.location.lat() + "<br/>Longitude :" +  
+// results[0].geometry.location.lng();  
+                        //console.log("lattitudev", results[0].geometry.location.lat()+" <br/>long "+results[0].geometry.location.lng());
+                    // /   console.log( distance(lat1, results[0].geometry.location.lat(), lon1, results[0].geometry.location.lng()))
+
+
+                        //  var distance1 = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lon1), new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));     
+                        //  console.log("distance ",distance1);
+
+                        // console.log(localStorage.getItem("clat"));
+                        var from = new google.maps.LatLng(localStorage.getItem("clat"), localStorage.getItem("clong"));
+                        var fromName = localStorage.getItem("caddress");
+                        var dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                        var destName =suggestion.value;
+
+                        console.log("dest ",localStorage.getItem("caddress"));
+
+                        var formattedlat = results[0].geometry.location.lat();
+                        var formattedlng = results[0].geometry.location.lng();
+
+                        var orgformatted_address = localStorage.getItem("caddress");
+                        var destformatted_address = destName;
+
+                        var originlat = localStorage.getItem("clat");
+                        var originlng = localStorage.getItem("clong");
+
+                        var service = new google.maps.DistanceMatrixService();
+                        service.getDistanceMatrix(
+                            {
+                                origins: [from, fromName],
+                                destinations: [destName, dest],
+                                travelMode: 'DRIVING',
+                                
+                            }, callback);
+                            
+                        function callback(response, status) {
+                            if (status == 'OK') {
+                                var origins = response.originAddresses;
+                                var destinations = response.destinationAddresses;
+                                var html1="";
+                                // console.log(response);
+                                var arr =[];
+                                for (var i = 0; i < origins.length; i++) {
+                                    var results = response.rows[1].elements;
+                                    // console.log(results);
+                                    for (var j = 0; j < results.length; j++) {
+                                        var element = results[j];
+                                        var distance = element.distance.text;
+                                        var duration = element.duration.text;
+                                        var from = origins[i];
+                                        var to = destinations[j];
+
+                                     
+                                    }
+                                    // console.log(element.distance.text);
+                                    arr.push({distance:element.distance.text, duration:element.duration.text});
+
+                                }
+                                                 
+                                                             
+                                // for (var i = 0; i < arr[0].length; i++) {
+                                    var removecomma = arr[0].distance.replace(',', '')
+                                    //console.log("di ",arr[0].distance+" - "+parseInt(removecomma));
+
+                                    const sorting = arr.reduce(
+                                        (acc, loc) =>
+                                          acc.distance < loc.distance
+                                            ? acc
+                                            : loc
+                                      )
+                                    
+                                      
+                                    // console.log("array f ",sorting);
+                                
+                                    // if(parseInt(removecomma)<30)
+                                    // {
+                                       // console.log(arr[1].distance);
+                                    
+                                            //  console.log(element.distance.text);
+                                        html += "<div class = 'sort '   id='"+parseInt(removecomma)+"' message_count='"+parseInt(removecomma)+"'><div class='row'><p style = 'color:#000 !important;'> <span>Distance : "+sorting.distance+"</span><span style='float:right;'> Duration:"+sorting.duration+"<span></p></div>";
+                                        //console.log(html1);
+                                        html += '<div class="row"  style="cursor:pointer;" id="insideid" data-id="'+parseInt(removecomma)+'"><div class="col-8" ><div  class="' + className + '" data-index="' + i + '" >' + formatResult(suggestion, value, i) + '</div></div><div class="col-2"><a  onclick="get_cookie_param(this)" data-id="'+destformatted_address+'"><i class="fa fa-map-marker markerstyle" style="color: #fff;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;background:red"></i></a></div><div class="col-2"><a href ="https://www.google.com/maps/dir/?api=1&origin='+orgformatted_address+'&destination='+destformatted_address+'" target="_blank"><i class="fas fa-globe" style="color: #fff;background:#0a58ca;margin-right: 10px;border-radius: 50%;border: 1px solid #ddd;padding: 10px;"></i></a>';
+                                        $(".sort").fadeIn(3000);
+                                        //    this.adjustContainerWidth();
+                                          html+="</div><hr/></div></div>";
+                                          $(this).animate({"left": "0","top":"0"});
+                                        // console.log(html);
+                                         container.html(html);
+
+                                        noSuggestionsContainer.detach();
+                                        
+
+                                        if ($.isFunction(beforeRender)) {
+                                            beforeRender.call(that.element, container, that.suggestions);
+                                        }
+
+                                        that.fixPosition();
+                                        container.show();
+                                        // console.log("select ",that);
+                                        // Select first value by default:
+                                        if (options.autoSelectFirst) {
+                                            
+                                            that.selectedIndex = 0;
+                                            container.scrollTop(0);
+                                            container.children('.' + className).first().addClass(classSelected);
+                                        }
+
+                                        that.visible = true;
+                                        that.findBestHint();
+
+
+                                    // }
+                                   
+                                   
+                                // }
+                               
+                                
+                            }
+                            
+
+                        }
+
+                       
+                       
+                    } else {  
+                        // res.innerHTML = "Wrong Details: " + status;  
+                        console.log("wrong")
+                    }  
+
+                }); 
+                
+                
+                
+              
             });
-            html+="</div>";
 
-            this.adjustContainerWidth();
-
-            noSuggestionsContainer.detach();
-            container.html(html);
-
-            if ($.isFunction(beforeRender)) {
-                beforeRender.call(that.element, container, that.suggestions);
-            }
-
-            that.fixPosition();
-            container.show();
-
-            // Select first value by default:
-            if (options.autoSelectFirst) {
-                that.selectedIndex = 0;
-                container.scrollTop(0);
-                container.children('.' + className).first().addClass(classSelected);
-            }
-
-            that.visible = true;
-            that.findBestHint();
+            
+           
         },
 
         noSuggestions: function() {
@@ -783,6 +1123,7 @@
             
             if (suggestion) {
                 hintValue = that.currentValue + suggestion.value.substr(that.currentValue.length);
+
             }
             if (that.hintValue !== hintValue) {
                 that.hintValue = hintValue;
@@ -790,7 +1131,10 @@
                 if ($.isFunction(onHintCallback)) {
                     onHintCallback.call(that.element, hintValue);
                 }
+
             }  
+
+
         },
 
         verifySuggestionsFormat: function (suggestions) {
@@ -800,6 +1144,7 @@
                     return { value: value, data: null };
                 });
             }
+
 
             return suggestions;
         },
@@ -867,7 +1212,8 @@
         select: function (i) {
             var that = this;
             that.hide();
-            that.onSelect(i);
+            // that.onSelect(i);
+
         },
 
         moveUp: function () {
@@ -934,25 +1280,38 @@
             that.onHint(null);
         },
 
-        onSelect: function (index) {
-            var that = this,
-                onSelectCallback = that.options.onSelect,
-                suggestion = that.suggestions[index];
+        // onSelect: function (index) {
+        //     var that = this,
+        //         onSelectCallback = that.options.onSelect,
+        //         suggestion = that.suggestions[index];
+                
+        //         var suggestion1 = "";
+        //         try{
+        //            that.currentValue = that.getValue(suggestion.value);
+        //            suggestion1 = that.suggestions;
+        //        }
+        //        catch{
+        //          for(var i=0;i<that.suggestions.length;i++){
+                      
+        //                  that.currentValue = that.getValue(that.suggestions[i].value);
+        //                  suggestion1 = that.suggestions[i].value;
 
-            that.currentValue = that.getValue(suggestion.value);
+        //             }
+        //        }
+        //     that.currentValue = that.getValue(suggestion.value);
 
-            if (that.currentValue !== that.el.val() && !that.options.preserveInput) {
-                that.el.val(that.currentValue);
-            }
-
-            that.onHint(null);
-            that.suggestions = [];
-            that.selection = suggestion;
-
-            if ($.isFunction(onSelectCallback)) {
-                onSelectCallback.call(that.element, suggestion);
-            }
-        },
+        //     if (that.currentValue !== that.el.val() && !that.options.preserveInput) {
+        //         that.el.val(that.currentValue);
+        //     }
+            
+        //     that.onHint(null);
+        //     that.suggestions = [];
+        //     that.selection = suggestion;
+            
+        //     if ($.isFunction(onSelectCallback)) {
+        //         onSelectCallback.call(that.element, suggestion);
+        //     }
+        // },
 
         getValue: function (value) {
             var that = this,
@@ -1015,3 +1374,5 @@
         $.fn.autocomplete = $.fn.devbridgeAutocomplete;
     }
 }));
+
+
