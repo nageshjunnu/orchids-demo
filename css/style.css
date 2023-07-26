@@ -10348,3 +10348,12 @@ input.form-control.bg-none.border-0 {
   margin-left: 24px;
 }
 
+
+i.markerstyle {
+    display: inline-block;
+    border-radius: 60px;
+    /* box-shadow: 0 0 2px #fff; */
+    padding: 0.5em 0.6em;
+    color: #fff;
+    margin-left: 10px;
+}
