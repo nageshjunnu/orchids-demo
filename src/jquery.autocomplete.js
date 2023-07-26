@@ -926,7 +926,7 @@
                         var dest = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                         var destName =suggestion.value;
 
-                        console.log("dest ",localStorage.getItem("caddress"));
+                        //console.log("dest ",localStorage.getItem("caddress"));
 
                         var formattedlat = results[0].geometry.location.lat();
                         var formattedlng = results[0].geometry.location.lng();
