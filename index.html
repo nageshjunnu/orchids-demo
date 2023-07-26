@@ -27,12 +27,18 @@
 
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="css/style.css">
+	 <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+
 </head>
 
 <body>
 
 <!-- navigation -->
-<header class="navigation bg-tertiary">
+<header class="navigation bg-tertiary animate__fadeInLeft">
 	<nav class="navbar navbar-expand-xl navbar-light text-center py-3" id="navbar_top">
 		<div class="container">
 			<a class="navbar-brand" href="index.html">
@@ -524,7 +530,7 @@ this journey for more than two decades by inspiring young minds.
 			<div class="col-lg-6 mt-lg-0">
 				<div class="section-title ps-0 ">
 					<!-- <p class="text-primary text-uppercase fw-bold mb-3">Values Wr Provide</p> -->
-					<div id = "map">
+					<div id="dvMap" style="height: 600px; width: 600px">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.093704318301!2d77.594096!3d12.840249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b3125c2b001%3A0x49117923fa146aa7!2sORCHIDS%20The%20International%20School%20-%20Bannerghatta!5e0!3m2!1sen!2sin!4v1689861148183!5m2!1sen!2sin" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 
@@ -797,6 +803,7 @@ this journey for more than two decades by inspiring young minds.
 			});
 			}); 
 	</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATu9bSEClphiWJSHSqWRyfiv1Ye43CFHA&libraries=places"></script>  
 
 <!-- # JS Plugins -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -814,5 +821,221 @@ this journey for more than two decades by inspiring young minds.
 <!-- Main Script -->
 <script src="js/script.js"></script>
 
+<script>
+	function distance(lat1,lat2, lon1, lon2)
+    {
+   
+        // The math module contains a function
+        // named toRadians which converts from
+        // degrees to radians.
+        lon1 =  lon1 * Math.PI / 180;
+        lon2 = lon2 * Math.PI / 180;
+        lat1 = lat1 * Math.PI / 180;
+        lat2 = lat2 * Math.PI / 180;
+   
+        // Haversine formula
+        let dlon = lon2 - lon1;
+        let dlat = lat2 - lat1;
+        let a = Math.pow(Math.sin(dlat / 2), 2)
+                 + Math.cos(lat1) * Math.cos(lat2)
+                 * Math.pow(Math.sin(dlon / 2),2);
+               
+        let c = 2 * Math.asin(Math.sqrt(a));
+   
+        // Radius of earth in kilometers. Use 3956
+        // for miles
+        let r = 6371;
+   
+        // calculate the result
+        return(c * r);
+    }
+ 
+// Driver code   
+          
+        let lat1 =13.0423855;
+        let lat2 = 13.0208629;
+        let lon1 = 77.5425014;
+        let lon2 = 77.5406423;
+        console.log(distance(lat1, lat2,	
+                           lon1, lon2) + " K.M");
+						   
+</script>
+
+	<script type="text/javascript">
+		if ("geolocation" in navigator){ //check geolocation available 
+			//try to get user current location using getCurrentPosition() method
+			navigator.geolocation.getCurrentPosition(function(position){ 
+					console.log("Found your location \nLat : "+position.coords.latitude+" \nLang :"+ position.coords.longitude);
+					localStorage.setItem("clat",position.coords.latitude);
+					localStorage.setItem("clong",position.coords.longitude);
+				});
+		}else{
+			console.log("Browser doesn't support geolocation!");
+		}
+		
+		$(document).ready(function(){
+			// setInterval(function() {
+			var players = $(".sortingdiv div");
+			var temp = players.sort(function(a,b){
+			return parseInt($(b).attr("message_count")) - parseInt($(a).attr("message_count"));
+			});
+			$(".sort").html(temp);
+				// console.log(1)
+			// }, 1000);
+		})
+		setInterval(function() {
+  
+			$(".sortingdiv div").hide();
+			$('.sortingdiv div').slice(0, 28).show();
+			try{
+					if($("#autocomplete-ajax").val() != ""){
+					const main = document.querySelector('.sortingdiv');
+					const divs = [...main.children];
+					divs.sort((a, b) => a.id - b.id);
+					divs.forEach(div => main.appendChild(div));
+				}
+			}
+			catch{}
+
+	
+	}, 1000);
+			
+			// $(document).ready(function(){
+			// 	$('.').toggle({ direction: "left" }, 1000);
+			// })
+  
+	  </script>  	
+
+<!-- Add the this google map apis to webpage -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyATu9bSEClphiWJSHSqWRyfiv1Ye43CFHA&libraries=places"></script> -->
+ 
+<script>
+
+function get_cookie_param(ele) {
+  var dataId = $(ele).attr("data-id");
+  GetLocation(dataId);
+  // alert(dataId);
+}
+
+$("#insideid").click(function(){
+	alert(this);
+})
+
+
+    function GetLocation(address) {
+        // var geocoder = new google.maps.Geocoder();
+        // geocoder.geocode({ 'address': address }, function (results, status) {
+        //     if (status == google.maps.GeocoderStatus.OK) {
+        //         var location = {};
+        //         location.lattitude = results[0].geometry.location.lat();
+        //         location.longitude = results[0].geometry.location.lng();
+        //         var mapOptions = {
+        //             center: new google.maps.LatLng(location.lattitude, location.longitude),
+        //             zoom: 17,
+        //             mapTypeId: google.maps.MapTypeId.ROADMAP
+        //         };
+        //         var infoWindow = new google.maps.InfoWindow();
+        //         var latlngbounds = new google.maps.LatLngBounds();
+        //         var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+        //         var myLatLng = new google.maps.LatLng(location.lattitude, location.longitude);
+        //         var marker = new google.maps.Marker({
+        //             position: myLatLng,
+        //             map: map,
+        //             title: results[0].formatted_address
+        //         });
+        //         google.maps.event.addListener(marker, "click", function (e) {
+        //             var location = e.latLng;
+        //             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+        //             // infoWindow.setContent("<div style = 'width:200px;min-height:40px'> Latitude:" + location.lat() + "<br/> Longitude:" + location.lng() + "</div>");
+        //             infoWindow.setContent(marker.title);
+        //             infoWindow.open(map, marker);
+
+        //         });
+ 
+        //     }
+        // });
+    	 var map = new google.maps.Map(document.getElementById("dvMap"),{ zoom: 8});
+    	 map.setZoom(12);
+            var infoWindow = new google.maps.InfoWindow();
+            var latlngbounds = new google.maps.LatLngBounds();                    
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var Latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                    var marker = new google.maps.Marker({
+                        position: Latlng,
+                        map: map,
+                         zoom: 10,
+                        title: results[0].formatted_address,
+                        
+                        //  icon: {
+								        //     url: 'http://maps.gstatic.com/mapfiles/circle.png',
+								        //     anchor: new google.maps.Point(10, 10),
+								        //     scaledSize: new google.maps.Size(10, 17)
+								        // }
+                    });
+                      const infowindow = new google.maps.InfoWindow({
+									    content: results[0].formatted_address,
+									    ariaLabel: "Orchids International School",
+									  });
+                    latlngbounds.extend(marker.position);
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(marker.title);
+                        infoWindow.open(map, marker);
+                    });
+                     infowindow.open({
+								      anchor: marker,
+								      map,
+								    });
+
+                    map.setCenter(latlngbounds.getCenter());
+                    map.fitBounds(latlngbounds);
+                } else {
+                    alert("Request failed.")
+                }
+            });
+    };    
+
+
+
+
+    //     $(function () {
+    //     $('[id*=btnShow]').on('click', function () {
+    //         var map = new google.maps.Map(document.getElementById("dvMap"));
+    //         var infoWindow = new google.maps.InfoWindow();
+    //         var latlngbounds = new google.maps.LatLngBounds();                    
+    //         var geocoder = new google.maps.Geocoder();
+    //         geocoder.geocode({ 'address': $('[id*=txtLocation]').val() }, function (results, status) {
+    //             if (status == google.maps.GeocoderStatus.OK) {
+    //                 var Latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+    //                 var marker = new google.maps.Marker({
+    //                     position: Latlng,
+    //                     map: map,
+    //                     title: results[0].formatted_address
+    //                 });
+    //                 latlngbounds.extend(marker.position);
+    //                 google.maps.event.addListener(marker, "click", function (e) {
+    //                     infoWindow.setContent(marker.title);
+    //                     infoWindow.open(map, marker);
+    //                 });
+
+    //                 map.setCenter(latlngbounds.getCenter());
+    //                 map.fitBounds(latlngbounds);
+    //             } else {
+    //                 alert("Request failed.")
+    //             }
+    //         });
+
+    //         return false;
+    //     });
+    // });
+</script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	 <script>
+      new WOW().init();
+      </script>
 </body>
 </html>
+
+
+
