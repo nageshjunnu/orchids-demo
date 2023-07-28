@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map- animate</title>
+
+    <style>
+        #map {
+            margin: 5% auto;
+            width: 60%;
+            height: 600px;
+        }
+
+        .marker-info {
+            position: absolute;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 4px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Different Brances Map Animation</h1>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATu9bSEClphiWJSHSqWRyfiv1Ye43CFHA&callback=initMap"
+        async defer>
+        </script>
+    <script>
+        // Your API key goes here
+        const apiKey = 'AIzaSyATu9bSEClphiWJSHSqWRyfiv1Ye43CFHA';
+
+        // Coordinates of the locations to animate
+        const locations = [
+            { lat: 17.44214320723522, lng: 78.3984221110801, info: 'ORCHIDS The International School - CBSE School in Jubilee Hills' }, // Orchids Jubliee Hills    17.44214320723522, 78.3984221110801
+            { lat: 13.047522768754368, lng: 77.54459380914867, info: 'ORCHIDS The International School- CBSE School in Jalahalli' }, // Orchids Jalahalli   13.047522768754368, 77.54459380914867
+            { lat: 12.881691122936386, lng: 80.20257560250883, info: 'ORCHIDS The International School - CBSE School in Perumbakkam' }, // Orchids Perumbakkam   12.881691122936386, 80.20257560250883
+            { lat: 19.140891279629155, lng: 72.81452511557642, info: 'ORCHIDS The International School - CBSE School in Andheri West' }, // Orchids AndheriWest
+            { lat: 28.42738317109992, lng: 77.09417649529762, info: 'ORCHIDS The International School - ICSE School in Sector 56 Gurgaon' }, // Orchids Sector 56 Gurugram   28.42738317109992, 77.09417649529762
+            // Add more locations as needed
+        ];
+
+        // Set the duration of the animation (in milliseconds)
+        const animationDuration = 4000; // 2 seconds
+
+        let marker;
+        let map;
+        let currentIndex = 0;
+        let startTime;
+        let infoWindow;
+
+        function initMap() {
+            // Initialize the map
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: locations[0],
+                zoom: 10,
+            });
+
+            // Create the marker
+            marker = new google.maps.Marker({
+                position: locations[0],
+                map: map,
+            });
+
+            // Create the InfoWindow
+            infoWindow = new google.maps.InfoWindow({
+                disableAutoPan: true, 
+            });
+
+            // Start the animation loop
+            // animateMarkerLoop();
+            setTimeout(animateMarkerLoop,3000);
+            updateInfoWindowContent(locations[currentIndex].info)
+        }
+
+        function animateMarkerLoop() {
+            const targetIndex = (currentIndex + 1) % locations.length;
+            startTime = performance.now();
+            animateMarker(locations[currentIndex], locations[targetIndex]);
+            // console.log(marker);
+        }
+
+        function animateMarker(start, target) {
+            const elapsedTime = performance.now() - startTime;
+            const percentage = Math.min(elapsedTime / animationDuration, 1);
+
+            const currentPosition = {
+                lat: start.lat + (target.lat - start.lat) * percentage,
+                lng: start.lng + (target.lng - start.lng) * percentage,
+            };
+
+            marker.setPosition(currentPosition);
+
+            // Update InfoWindow content with target location info
+                updateInfoWindowContent(target.info);
+
+            if (percentage >= 1) {
+                currentIndex = (currentIndex + 1) % locations.length;
+                setTimeout(animateMarkerLoop, 6000); // Add a delay before starting the next animation
+            } else {
+                const mapCenter = {
+                    lat: currentPosition.lat,
+                    lng: currentPosition.lng,
+                };
+                map.setCenter(mapCenter);
+
+                requestAnimationFrame(() => animateMarker(start, target));
+            }
+        }
+
+        function updateInfoWindowContent(content) {
+            infoWindow.setContent(`<strong>${content}</strong>`);
+            infoWindow.open(map, marker);
+        }
+
+        // // Load the Google Maps API with the callback to initialize the map
+        // function loadScript() {
+        //     const script = document.createElement('script');
+        //     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+        //     document.body.appendChild(script);
+        // }
+
+        // loadScript();
+
+    </script>
+
+    <!-- 
+    { lat: 19.22742171982525, lng: 72.8346522687919 },         // Orchids Borivali
+{ lat: 19.196405090342598, lng: 72.84144259621667 }, // Orchids Malad West 19.196405090342598, 72.84144259621667
+{ lat: 19.186515687566903, lng: 72.8512272938644 },  // Orchids Malad East  19.186515687566903, 72.8512272938644
+{ lat: 19.140891279629155, lng: 72.81452511557642},        // Orchids AndheriWest    19.140891279629155, 72.81452511557642
+{ lat: 19.244687093835584, lng: 72.98369150876522},        // Orchids Thane   19.244687093835584, 72.98369150876522
+{ lat: 19.124171910784668, lng: 72.92983745650507 },        // Orchids Vikhroli     19.124171910784668, 72.92983745650507
+{ lat: 19.069505685110002, lng: 72.87851070919506},        // Orchids Kurla   19.069505685110002, 72.87851070919506
+{ lat: 19.10005747199087, lng: 73.00249197012747 },        // Orchids Koparkhairane 19.10005747199087, 73.00249197012747 
+
+
+
+
+{ lat: 19.22742171982525, lng: 72.8346522687919 , info: 'ORCHIDS The International School - CBSE School in Borivali' },         // Orchids Borivali
+            { lat: 19.196405090342598, lng: 72.84144259621667, info: 'ORCHIDS The International School - CBSE School in Malad West' }, // Orchids Malad West 19.196405090342598, 72.84144259621667
+            { lat: 19.186515687566903, lng: 72.8512272938644 , info:'Orchids The International School in Malad East' },  // Orchids Malad East  19.186515687566903, 72.8512272938644
+            { lat: 19.140891279629155, lng: 72.81452511557642 , info: 'ORCHIDS The International School - CBSE School in Andheri West' },        // Orchids AndheriWest    19.140891279629155, 72.81452511557642
+            { lat: 19.244687093835584, lng: 72.98369150876522, info:'ORCHIDS The International School - CBSE School in Thane' },        // Orchids Thane   19.244687093835584, 72.98369150876522
+            { lat: 19.124171910784668, lng: 72.92983745650507, info:'ORCHIDS The International School - CBSE School in Vikhroli' },        // Orchids Vikhroli     19.124171910784668, 72.92983745650507
+            { lat: 19.069505685110002, lng: 72.87851070919506, info:'ORCHIDS The International School in Kurla' },        // Orchids Kurla   19.069505685110002, 72.87851070919506
+            { lat: 19.10005747199087, lng: 73.00249197012747, info:'ORCHIDS The International School - CBSE School in Koparkhairane Sector 14' },        // Orchids Koparkhairane 19.10005747199087, 73.00249197012747 
+            // Add more locations as needed
+-->
+</body>
+
+</html>
